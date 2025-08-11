@@ -42,7 +42,8 @@ public class EmployeeDataProcessor implements ItemProcessor<Employee,EmployeeDet
 		employeeDetails.setName(employee.getName());
 		employeeDetails.setAge(employee.getAge());
 		employeeDetails.setSalary(employee.getSalary());
-		employeeDetails.setCountry(employee.getCountry());
+		//Here wrongly setting country with name, it should be set with country code  
+		employeeDetails.setCountry(employee.getName());
 		employeeDetails.setRegion(region);
 		
 		return employeeDetails;

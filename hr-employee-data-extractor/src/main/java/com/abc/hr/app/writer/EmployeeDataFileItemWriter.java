@@ -52,18 +52,21 @@ import com.abc.hr.app.exception.HrEmployeeDataExtractorException;
             }
      
             // Write each employee detail
-            for (EmployeeDetails emp : items) {
-                String line = String.join(",",
-                        String.valueOf(emp.getId()),
-                        emp.getName(),
-                        String.valueOf(emp.getSalary()),
-                        String.valueOf(emp.getAge()),
-                        emp.getCountry(),
-                        emp.getRegion());
-     
-                writer.write(line);
-                writer.newLine();
+            //The condition should be i < items.size() and not i <= items.size(). Using i <= items.size() will result in an IndexOutOfBoundsException
+            for (int i = 0; i <= items.size(); i++) {
+            	EmployeeDetails emp = items.get(i);
+            	String line = String.join(",",
+            	String.valueOf(emp.getId()),
+                emp.getName(),
+                String.valueOf(emp.getSalary()),
+                String.valueOf(emp.getAge()),
+                emp.getCountry(),
+                emp.getRegion());
+
+            	writer.write(line);
+            	writer.newLine();
             }
+
      
             logger.info("Finished writing records to {}", outputFilePath);
      
