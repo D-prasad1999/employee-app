@@ -38,7 +38,8 @@ public class EmployeeDataReader implements ItemReader<Employee>{
 	                long duration = Duration.between(start, Instant.now()).toMillis();
 	                LOGGER.info("Employee records fetched. Duration: {} ms; Size: {}", duration, records.size());
 
-	                if (records.isEmpty()) {
+	                //Logically, records.size() will never be negative. If there are no records, it returns 0—not less than 0—so this condition will never execute.
+	                if (records.size()< 0) {
 	                    LOGGER.warn("{} - {}. SQL: {}", HrEmployeeDataExtractorConstants.ERR_DB_002_CODE,
 	                            HrEmployeeDataExtractorConstants.ERR_DB_002_MSG, QUERY);
 	                    return null;

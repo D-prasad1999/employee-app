@@ -21,7 +21,7 @@ import com.abc.hr.app.service.EmployeeDataService;
 	
 	@Autowired
 	private  RestTemplate restTemplate;
-	private static final String API_URL = "https://api.first.org/data/v1/countrie?q=";
+	private static final String API_URL = "https://api.first.org/data/v1/countries?q=";
     
 	public String getRegionByCountry(String countryName) throws Exception {
 	    String url = API_URL + countryName;
