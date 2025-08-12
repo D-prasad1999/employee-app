@@ -1,19 +1,20 @@
 package com.abc.hr.app.entity;
 
 public class EmployeeDetails {
-	
-	private int id;
-	private String name;
-	private int salary;
-	private int age;
-	private String country;
-	private String region;
-	
-	public int getId() {
-		return id;
+	 
+    private Long empId;
+    private String name;
+    private String department;
+    private double salary;
+    private double bonus;
+    private double totalPaybleSalary;
+    private String country;
+    private String region;
+	public Long getEmpId() {
+		return empId;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setEmpId(Long empId) {
+		this.empId = empId;
 	}
 	public String getName() {
 		return name;
@@ -21,17 +22,29 @@ public class EmployeeDetails {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getSalary() {
+	public String getDepartment() {
+		return department;
+	}
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+	public double getSalary() {
 		return salary;
 	}
-	public void setSalary(int salary) {
+	public void setSalary(double salary) {
 		this.salary = salary;
 	}
-	public int getAge() {
-		return age;
+	public double getTotalPaybleSalary() {
+		return totalPaybleSalary;
 	}
-	public void setAge(int age) {
-		this.age = age;
+	public void setTotalPaybleSalary(double totalPaybleSalary) {
+		this.totalPaybleSalary = totalPaybleSalary;
+	}
+	public double getBonus() {
+		return bonus;
+	}
+	public void setBonus(double bonus) {
+		this.bonus = bonus;
 	}
 	public String getCountry() {
 		return country;

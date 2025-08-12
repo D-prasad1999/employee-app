@@ -15,7 +15,10 @@ import org.springframework.stereotype.Component;
 import com.abc.hr.app.entity.EmployeeDetails;
 import com.abc.hr.app.exception.HrEmployeeDataExtractorException;
 
- @Component
+/* This class is responsible for writing employee details to a CSV file.
+ * It generates a file name with a timestamp and writes the employee data in CSV format.
+ * */
+@Component
  public class EmployeeDataFileItemWriter implements ItemWriter<EmployeeDetails> {
  
     private static final Logger logger = LoggerFactory.getLogger(EmployeeDataFileItemWriter.class);
@@ -46,23 +49,26 @@ import com.abc.hr.app.exception.HrEmployeeDataExtractorException;
      
             // Write header if needed
             if (!headerWritten && !append) {
-                writer.write("Id,Name,Salary,Age,Country,Region");
+            	writer.write("Id,Name,Department,Salary,Bonus,TotalPayableAmount,Country,Region");
                 writer.newLine();
                 headerWritten = true;
             }
      
             // Write each employee detail
-            for (EmployeeDetails emp : items) {
-                String line = String.join(",",
-                        String.valueOf(emp.getId()),
-                        emp.getName(),
-                        String.valueOf(emp.getSalary()),
-                        String.valueOf(emp.getAge()),
-                        emp.getCountry(),
-                        emp.getRegion());
-     
-                writer.write(line);
-                writer.newLine();
+            for (int i = 0; i < items.size(); i++) {
+            	EmployeeDetails emp = items.get(i);
+            	String line = String.join(",",
+            	String.valueOf(emp.getEmpId()),
+                emp.getName(),
+                String.valueOf(emp.getDepartment()),
+                String.valueOf(emp.getSalary()),
+                String.valueOf(emp.getBonus()),
+                String.valueOf(emp.getTotalPaybleSalary()),
+                emp.getCountry(),
+                emp.getRegion());
+
+            	writer.write(line);
+            	writer.newLine();
             }
      
             logger.info("Finished writing records to {}", outputFilePath);
