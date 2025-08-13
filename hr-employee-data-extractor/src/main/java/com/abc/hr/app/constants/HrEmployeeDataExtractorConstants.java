@@ -7,8 +7,5 @@ public final class HrEmployeeDataExtractorConstants {
 	public static final String SERVICE_NAME = "hr-employee-data-extractor";
 	public static final String CLEANUP_OLD_CSVFILES_STEP_NAME = "cleanupOldCsvFilesStep";
 	
-	public static final String QUERY = "SELECT * FROM employee";
-	
-	
-	
+	public static final String QUERY = "SELECT * FROM employees_details";
 }

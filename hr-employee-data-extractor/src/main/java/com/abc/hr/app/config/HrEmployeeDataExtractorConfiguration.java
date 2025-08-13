@@ -12,8 +12,8 @@ import org.springframework.web.client.RestTemplate;
 import javax.net.ssl.*;
 import java.security.SecureRandom;
 import java.security.cert.X509Certificate;
+import java.util.Map;
 import static com.abc.hr.app.constants.HrEmployeeDataExtractorConstants.*;
-import com.abc.hr.app.entity.Employee;
 import com.abc.hr.app.entity.EmployeeDetails;
 import com.abc.hr.app.listener.HrEmployeeDataExtractorJobCompletionNotificationListener;
 import com.abc.hr.app.processor.EmployeeDataProcessor;
@@ -55,7 +55,7 @@ public class HrEmployeeDataExtractorConfiguration {
 			 EmployeeDataReader reader, EmployeeDataFileItemWriter writer) {
 
 		return stepBuilderFactory.get(EXTRACT_DATA_STEP)
-								 .<Employee,EmployeeDetails>chunk(20)
+								 .<Map<String, Object>,EmployeeDetails>chunk(20)
 								 .reader(reader)
 								 .processor(processor())
 								 .writer(writer)
